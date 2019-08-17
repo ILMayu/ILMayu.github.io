@@ -5,15 +5,19 @@
   
 
   
-  <title>Lxl&#39;s Blog</title>
+  <title>基于接口和基于子类的动态代理 | Lxl&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Lxl&#39;s Blog">
-<meta property="og:url" content="https://github.com/ILMayu/index.html">
+  <meta name="description" content="动态代理 作用：不改变源码的基础上，对已有的方法增强，是AOP思想的实现基础 基于接口123456789101112131415161718192021      要求：被代理类最少实现一个接口提供者：JDK官方涉及的类：Proxy创建代理对象的方法：newProxyInstance(ClassLoader, Class[], InvocationHandler)参数一：类加载器，和被代理对象使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于接口和基于子类的动态代理">
+<meta property="og:url" content="https://github.com/ILMayu/2019/08/17/基于接口和基于子类的动态代理/index.html">
 <meta property="og:site_name" content="Lxl&#39;s Blog">
+<meta property="og:description" content="动态代理 作用：不改变源码的基础上，对已有的方法增强，是AOP思想的实现基础 基于接口123456789101112131415161718192021      要求：被代理类最少实现一个接口提供者：JDK官方涉及的类：Proxy创建代理对象的方法：newProxyInstance(ClassLoader, Class[], InvocationHandler)参数一：类加载器，和被代理对象使用">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-17T15:38:27.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lxl&#39;s Blog">
+<meta name="twitter:title" content="基于接口和基于子类的动态代理">
+<meta name="twitter:description" content="动态代理 作用：不改变源码的基础上，对已有的方法增强，是AOP思想的实现基础 基于接口123456789101112131415161718192021      要求：被代理类最少实现一个接口提供者：JDK官方涉及的类：Proxy创建代理对象的方法：newProxyInstance(ClassLoader, Class[], InvocationHandler)参数一：类加载器，和被代理对象使用">
   
     <link rel="alternate" href="/atom.xml" title="Lxl&#39;s Blog" type="application/atom+xml">
   
@@ -60,9 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-基于接口和基于子类的动态代理" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-基于接口和基于子类的动态代理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/17/基于接口和基于子类的动态代理/" class="article-date">
   <time datetime="2019-08-17T14:40:27.000Z" itemprop="datePublished">2019-08-17</time>
@@ -75,8 +77,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/17/基于接口和基于子类的动态代理/">基于接口和基于子类的动态代理</a>
+    <h1 class="article-title" itemprop="name">
+      基于接口和基于子类的动态代理
     </h1>
   
 
@@ -112,156 +114,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-我的第一篇博客文章" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/17/我的第一篇博客文章/" class="article-date">
-  <time datetime="2019-08-16T16:00:21.000Z" itemprop="datePublished">2019-08-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/17/我的第一篇博客文章/">我的第一篇博客文章 --- Markdown语言学习</a>
-    </h1>
+    <a href="/2019/08/17/我的第一篇博客文章/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">我的第一篇博客文章 --- Markdown语言学习</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第一章-标题"><a href="#第一章-标题" class="headerlink" title="第一章    标题"></a>第一章    标题</h1><h2 id="1-小标题"><a href="#1-小标题" class="headerlink" title="1.小标题"></a>1.小标题</h2><h3 id="1-小标题-1"><a href="#1-小标题-1" class="headerlink" title="1.小标题"></a>1.小标题</h3><p>#号越多标题字越小 </p>
-<hr>
-<h1 id="第二章-列表"><a href="#第二章-列表" class="headerlink" title="第二章    列表"></a>第二章    列表</h1><p>*+-效果相同</p>
-<p>* 第一项<br>* 第二项<br>* 第三项</p>
-<p>+ 第一项<br>+ 第二项<br>+ 第三项</p>
-<p>- 第一项<br>- 第二项<br>- 第三项  </p>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项  </li>
-</ul>
-<hr>
-<h1 id="第三章-字体"><a href="#第三章-字体" class="headerlink" title="第三章    字体"></a>第三章    字体</h1><p>*斜体*</p>
-<p>**粗体**</p>
-<p>***粗斜体***</p>
-<p><em>斜体</em></p>
-<p><strong>粗体</strong></p>
-<p><strong><em>粗斜体</em></strong></p>
-<hr>
-<h1 id="第四章-区块"><a href="#第四章-区块" class="headerlink" title="第四章    区块"></a>第四章    区块</h1><p>&gt; 最外层<br>&gt; &gt; 第二层<br>&gt; &gt; &gt; 第三层  </p>
-<blockquote>
-<p>最外层</p>
-<blockquote>
-<p>第二层</p>
-<blockquote>
-<p>第三层  </p>
-</blockquote>
-</blockquote>
-</blockquote>
-<hr>
-<h1 id="第五章-链接"><a href="#第五章-链接" class="headerlink" title="第五章    链接"></a>第五章    链接</h1><pre><code>这是一个链接[菜鸟教程](https://www.runoob.com)</code></pre><p> 这是一个链接<a href="https://www.runoob.com" target="_blank" rel="noopener">菜鸟教程</a></p>
-<hr>
-<h1 id="第六章-图片插入"><a href="#第六章-图片插入" class="headerlink" title="第六章    图片插入"></a>第六章    图片插入</h1><pre><code>![cat](/img/cat.jpg)</code></pre><p> <img src="/img/cat.jpg" alt="cat"></p>
-<hr>
-<h1 id="第七章-表格"><a href="#第七章-表格" class="headerlink" title="第七章    表格"></a>第七章    表格</h1><table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th>居中对齐</th>
-<th align="right">右对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>del</kbd>重启电脑</td>
-<td></td>
-<td align="right"></td>
-</tr>
-</tbody></table>
-<hr>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://www.runoob.com/markdown/md-tutorial.html" target="_blank" rel="noopener">https://www.runoob.com/markdown/md-tutorial.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/我的第一篇博客文章/" data-id="cjzfpi3sb0002wwv86i61ir2k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/16/hello-world/" class="article-date">
-  <time datetime="2019-08-16T14:25:02.185Z" itemprop="datePublished">2019-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/16/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/16/hello-world/" data-id="cjzfpi3s10000wwv8852bekoj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
