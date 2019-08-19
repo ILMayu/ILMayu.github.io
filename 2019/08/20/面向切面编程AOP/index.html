@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>面向切面编程AOP | Lxl&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="spring中基于XML的AOP配置步骤1、把通知Bean也交给spring来管理  2、使用aop:config标签表明开始AOP的配置  3、使用aop:aspect标签表明配置切面      id属性:是给切面提供一个唯一 标识ref属性: 是指定通知类bean的Id。  4、在aop:aspect标签的内部使用对应标签来配置通知的类型 四种常用通知类型aop:before        前">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向切面编程AOP">
+<meta property="og:url" content="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/index.html">
+<meta property="og:site_name" content="Lxl&#39;s Blog">
+<meta property="og:description" content="spring中基于XML的AOP配置步骤1、把通知Bean也交给spring来管理  2、使用aop:config标签表明开始AOP的配置  3、使用aop:aspect标签表明配置切面      id属性:是给切面提供一个唯一 标识ref属性: 是指定通知类bean的Id。  4、在aop:aspect标签的内部使用对应标签来配置通知的类型 四种常用通知类型aop:before        前">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-19T18:05:35.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向切面编程AOP">
+<meta name="twitter:description" content="spring中基于XML的AOP配置步骤1、把通知Bean也交给spring来管理  2、使用aop:config标签表明开始AOP的配置  3、使用aop:aspect标签表明配置切面      id属性:是给切面提供一个唯一 标识ref属性: 是指定通知类bean的Id。  4、在aop:aspect标签的内部使用对应标签来配置通知的类型 四种常用通知类型aop:before        前">
+  
+    <link rel="alternate" href="/atom.xml" title="Lxl&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lxl&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/ILMayu"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-面向切面编程AOP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/20/面向切面编程AOP/" class="article-date">
+  <time datetime="2019-08-19T17:10:25.000Z" itemprop="datePublished">2019-08-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面向切面编程AOP
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="spring中基于XML的AOP配置步骤"><a href="#spring中基于XML的AOP配置步骤" class="headerlink" title="spring中基于XML的AOP配置步骤"></a>spring中基于XML的AOP配置步骤</h1><pre><code>1、把通知Bean也交给spring来管理
+
+2、使用aop:config标签表明开始AOP的配置
+
+3、使用aop:aspect标签表明配置切面
+
+    id属性:是给切面提供一个唯一 标识ref属性: 是指定通知类bean的Id。
+
+4、在aop:aspect标签的内部使用对应标签来配置通知的类型</code></pre><hr>
+<h1 id="四种常用通知类型"><a href="#四种常用通知类型" class="headerlink" title="四种常用通知类型"></a>四种常用通知类型</h1><pre><code>aop:before        前置通知:在切入点方法执行之前执行
+
+aop:after-returning  后置通知:在切入点方法正常执行之后值。它和异常通知永远只能执行一个。
+
+aop: after- throwing 异常通知:在切入点方法执行产生异常之后执行。它和后置通知永远只能执行一个
+
+aop: after       配置最终通知:无论切入点方法是否正常执行它都会在其后面执行</code></pre><h2 id="标签属性"><a href="#标签属性" class="headerlink" title="标签属性"></a>标签属性</h2><pre><code>method属性:用于指定Logger类中哪个方法是前置通知
+
+pointcut属性:用于指定切入点表达式，该表达式的含义指的是对业务层中哪些方法增强
+
+pointcut-ref属性:引用aop:pointcut配置的切入点表达式</code></pre><h3 id="标准的表达式写法"><a href="#标准的表达式写法" class="headerlink" title="标准的表达式写法"></a>标准的表达式写法</h3><pre><code>例子：public void com.lxl.service.impl.AccountServiceImpl.saveAccount()
+
+1. 访问修饰符可以不写,返回值可以使用通配符，表示任意返回值
+
+2. 包名可以使用通配符，表示任意包。但是有几级包，就需要写几个*.
+
+    例子：* *..AccountServiceImpl.saveAccount()
+
+3. 类名和方法名都可以使用*来实现通配
+
+    例子：* *..*.*()</code></pre><h4 id="参数列表"><a href="#参数列表" class="headerlink" title="参数列表"></a>参数列表</h4><pre><code>1. 可以直接写数据类型
+
+2.基本类型直接写名称  int
+
+3.引用类型写包名.类名的方式  java.lang.String</code></pre><h3 id="全通配写法"><a href="#全通配写法" class="headerlink" title="全通配写法"></a>全通配写法</h3><p>​    <figure class="highlight plain"><figcaption><span>*..*.*(..)```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## aop:pointcut标签</span><br><span class="line"></span><br><span class="line">	作用：配置通用的表达式 减少代码冗余</span><br><span class="line">	</span><br><span class="line">	1. 此标签写在aop: aspect标签内部只能当前切面配置使用。</span><br><span class="line">	</span><br><span class="line">	2. 它还可以写在aop:aspect外面，此时就变成了所有切面配置可用</span><br><span class="line"></span><br><span class="line">### 用于配置切入点表达式的属性</span><br><span class="line"></span><br><span class="line">	id 			属性用于指定表达式的唯一标识</span><br><span class="line">	</span><br><span class="line">	expression 	属性用于指定表达式内容 触发通知的条件</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># 环绕通知 aop:around</span><br><span class="line"></span><br><span class="line">	作用: 在接入点方法执行前后实现通知 在aop:before 前置通知之后</span><br><span class="line">	</span><br><span class="line">	问题: 当我们配置了环绕通知之后，切入点方法没有执行，而通知方法执行了。该配置会拦截方法的执行,需另行调用。</span><br><span class="line">	</span><br><span class="line">	分析: 通过对比动态代理中的环绕通知代码，发现动态代理的环绕通知有明确的切入点方法调用。</span><br><span class="line">	</span><br><span class="line">	解诀: Spring框架为我们提供了一个接口: ProceedingJoinPoint。 该接口有一个方法proceed(),此方法就相当于明确调用切入点方法。</span><br><span class="line">	该接口可以作为环绕通知的方法参数，在程序执行时，spring框架 会为我们提供该接口的实现类供我们使用。</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"># 代码演示</span><br><span class="line"></span><br><span class="line">## com.lxl.service.IAccountService 接口</span><br></pre></td></tr></table></figure></p>
+<p>package com.lxl.service;</p>
+<p>public interface IAccountService {<br>    void saveAccount();<br>    void updateAccount(int i);<br>    int deleteAccount();<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## com.lxl.service.impl.AccountService</span><br></pre></td></tr></table></figure>
+
+<p>package com.lxl.service.impl;</p>
+<p>import com.lxl.service.IAccountService;</p>
+<p>public class AccountServiceImpl implements IAccountService {</p>
+<pre><code>@Override
+public void saveAccount() {
+    System.out.println(&quot;保存&quot;);
+}
+
+@Override
+public void updateAccount(int i) {
+    System.out.println(&quot;更新&quot; + i);
+}
+
+@Override
+public int deleteAccount() {
+    System.out.println(&quot;删除&quot;);
+    return 1;
+}</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## com.lxl.utils.Logger 通知类</span><br></pre></td></tr></table></figure>
+
+<p>package com.lxl.utils;</p>
+<p>import org.aspectj.lang.ProceedingJoinPoint;</p>
+<p>public class Logger {<br>    public void beginLog(){<br>        System.out.println(“aop:before 日志”);<br>    }</p>
+<pre><code>public Object aroundLog(ProceedingJoinPoint pjp){
+    Object rtValue = null;
+    try {
+        Object[] args = pjp.getArgs();
+        System.out.println(&quot;aop:around 的before&quot;);
+        rtValue = pjp.proceed(args);
+        System.out.println(&quot;aop:around 的after-returning&quot;);
+        return rtValue;
+
+    } catch (Throwable t) {
+        //Exception类无法捕获此类异常
+        System.out.println(&quot;aop:around 的after-throwing&quot;);
+        throw new RuntimeException(t);
+    } finally {
+        System.out.println(&quot;aop:around 的after&quot;);
+    }
+
+}
+
+public void returningLog(){
+    System.out.println(&quot;aop:after-returning 日志&quot;);
+}
+
+public void throwingLog(){
+    System.out.println(&quot;aop:after-throwing 日志&quot;);
+}
+
+public void afterLog(){
+    System.out.println(&quot;aop:after 日志&quot;);
+}</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## bean.xml</span><br></pre></td></tr></table></figure>
+
+<p><beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemalocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd"></beans></p>
+<pre><code>&lt;bean id=&quot;accountService&quot; class=&quot;com.lxl.service.impl.AccountServiceImpl&quot;/&gt;
+&lt;bean id=&quot;logger&quot; class=&quot;com.lxl.utils.Logger&quot;/&gt;
+
+&lt;aop:config&gt;
+
+        &lt;!--切入点配置--&gt;
+    &lt;aop:pointcut id=&quot;pt1&quot; expression=&quot;execution(public * com.lxl.service.impl.AccountServiceImpl.*(..))&quot;/&gt;
+    &lt;aop:aspect id=&quot;LogAdvice&quot; ref=&quot;logger&quot;&gt;
+        &lt;!--前置通知--&gt;
+        &lt;aop:before method=&quot;beginLog&quot; pointcut-ref=&quot;pt1&quot;/&gt;
+        &lt;!--环绕通知--&gt;
+        &lt;aop:around method=&quot;aroundLog&quot; pointcut-ref=&quot;pt1&quot;/&gt;
+        &lt;!--后置通知--&gt;
+        &lt;aop:after-returning method=&quot;returningLog&quot; pointcut-ref=&quot;pt1&quot;/&gt;
+        &lt;!--异常通知--&gt;
+        &lt;aop:after-throwing method=&quot;throwingLog&quot; pointcut-ref=&quot;pt1&quot;/&gt;
+        &lt;!--最终通知--&gt;
+        &lt;aop:after method=&quot;afterLog&quot; pointcut-ref=&quot;pt1&quot;/&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 测试</span><br><span class="line"></span><br><span class="line">### 测试类</span><br></pre></td></tr></table></figure>
+
+<p>package com.lxl.test;</p>
+<p>import com.lxl.service.IAccountService;<br>import org.junit.Test;<br>import org.springframework.context.support.ClassPathXmlApplicationContext;</p>
+<p>public class aopTest {<br>    @Test<br>    public void test(){<br>        ClassPathXmlApplicationContext act = new ClassPathXmlApplicationContext(“bean.xml”);<br>        IAccountService as = act.getBean(“accountService”, IAccountService.class);<br>        as.saveAccount();<br>    }<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 测试结果</span><br></pre></td></tr></table></figure>
+
+<p>aop:before 日志<br>aop:around 的before<br>保存<br>aop:around 的after-returning<br>aop:around 的after<br>aop:after-returning 日志<br>aop:after 日志<br>```</p>
+<p>​<br>​<br>​    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/" data-id="cjzipnwz90003psv8gd26dqai" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/17/基于接口和基于子类的动态代理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">基于接口和基于子类的动态代理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/20/面向切面编程AOP/">面向切面编程AOP</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/17/基于接口和基于子类的动态代理/">基于接口和基于子类的动态代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/17/我的第一篇博客文章/">我的第一篇博客文章 --- Markdown语言学习</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/16/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Lxl<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
