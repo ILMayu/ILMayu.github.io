@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Spring 配置文件 命名空间及约束详解 | Lxl&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这里总结关于Spring的XML约束+Schema约束。以后不管是仅使用ioc功能还是aop，把全部的约束引入即可 Spring的约束【全面】123456789101112131415&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;beans xmlns=&amp;quot;http://www.springframe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring 配置文件 命名空间及约束详解">
+<meta property="og:url" content="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/index.html">
+<meta property="og:site_name" content="Lxl&#39;s Blog">
+<meta property="og:description" content="这里总结关于Spring的XML约束+Schema约束。以后不管是仅使用ioc功能还是aop，把全部的约束引入即可 Spring的约束【全面】123456789101112131415&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;beans xmlns=&amp;quot;http://www.springframe">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://github.com/img/spring.png">
+<meta property="og:updated_time" content="2019-08-20T11:18:51.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring 配置文件 命名空间及约束详解">
+<meta name="twitter:description" content="这里总结关于Spring的XML约束+Schema约束。以后不管是仅使用ioc功能还是aop，把全部的约束引入即可 Spring的约束【全面】123456789101112131415&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;beans xmlns=&amp;quot;http://www.springframe">
+<meta name="twitter:image" content="https://github.com/img/spring.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Lxl&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lxl&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/ILMayu"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring-配置文件-命名空间及约束详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/20/Spring-配置文件-命名空间及约束详解/" class="article-date">
+  <time datetime="2019-08-20T11:10:06.000Z" itemprop="datePublished">2019-08-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring 配置文件 命名空间及约束详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这里总结关于Spring的XML约束+Schema约束。以后不管是仅使用ioc功能还是aop，把全部的约束引入即可</p>
+<h1 id="Spring的约束【全面】"><a href="#Spring的约束【全面】" class="headerlink" title="Spring的约束【全面】"></a>Spring的约束【全面】</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">    xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;</span><br><span class="line">    xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</span><br><span class="line">    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans </span><br><span class="line">    http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">    http://www.springframework.org/schema/context</span><br><span class="line">    http://www.springframework.org/schema/context/spring-context.xsd</span><br><span class="line">    http://www.springframework.org/schema/aop</span><br><span class="line">    http://www.springframework.org/schema/aop/spring-aop.xsd</span><br><span class="line">    http://www.springframework.org/schema/tx</span><br><span class="line">    http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    //上面两个是基础IOC的约束，必备</span><br><span class="line">    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</span><br><span class="line">    //上面一个是开启注解管理Bean对象的约束</span><br><span class="line">    xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;</span><br><span class="line">    //aop的注解约束</span><br><span class="line">    xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;</span><br><span class="line">    //事务的约束</span><br><span class="line">    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans </span><br><span class="line">    http://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="line">    //上面两个是基础IOC的约束，必备</span><br><span class="line">    http://www.springframework.org/schema/context</span><br><span class="line">    http://www.springframework.org/schema/context/spring-context.xsd</span><br><span class="line">    //上面一个是开启注解管理Bean对象的约束</span><br><span class="line">    http://www.springframework.org/schema/aop</span><br><span class="line">    http://www.springframework.org/schema/aop/spring-aop.xsd</span><br><span class="line">    //aop的注解约束</span><br><span class="line">    http://www.springframework.org/schema/tx</span><br><span class="line">    http://www.springframework.org/schema/tx/spring-tx.xsd&quot;&gt;</span><br><span class="line">    //事务的约束</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/spring.png" alt="spring"></p>
+<p>转载自：<a href="https://blog.csdn.net/Stephen_mu/article/details/87347487" target="_blank" rel="noopener">https://blog.csdn.net/Stephen_mu/article/details/87347487</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/" data-id="cjzjqky7700005gv8apccz4py" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/20/面向切面编程AOP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">面向切面编程AOP</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/20/Spring-配置文件-命名空间及约束详解/">Spring 配置文件 命名空间及约束详解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/20/面向切面编程AOP/">面向切面编程AOP</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/17/基于接口和基于子类的动态代理/">基于接口和基于子类的动态代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/17/我的第一篇博客文章/">我的第一篇博客文章 --- Markdown语言学习</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/16/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Lxl<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
