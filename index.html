@@ -62,6 +62,81 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-事务传播行为详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/24/事务传播行为详解/" class="article-date">
+  <time datetime="2019-08-23T16:18:12.000Z" itemprop="datePublished">2019-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/24/事务传播行为详解/">事务传播行为详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="事务传播行为"><a href="#事务传播行为" class="headerlink" title="事务传播行为"></a>事务传播行为</h1><p>事务的第一个方面是传播行为（propagation behavior）。当事务方法被另一个事务方法调用时，必须指定事务应该如何传播。</p>
+<p>例如：方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己的事务中运行。Spring定义了七种传播行为：</p>
+<table>
+<thead>
+<tr>
+<th align="left">传播行为</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">PROPAGATION_REQUIRED</td>
+<td align="left">表示当前方法必须运行在事务中。如果当前事务存在，方法将会在该事务中运行。否则，会启动一个新的事务</td>
+</tr>
+<tr>
+<td align="left">PROPAGATION_SUPPORTS</td>
+<td align="left">表示当前方法不需要事务上下文，但是如果存在当前事务的话，那么该方法会在这个事务中运行</td>
+</tr>
+<tr>
+<td align="left">PROPAGATION_MANDATORY</td>
+<td align="left">表示该方法必须在事务中运行，如果当前事务不存在，则会抛出一个异常</td>
+</tr>
+<tr>
+<td align="left">PROPAGATION_REQUIRED_NEW</td>
+<td align="left">表示当前方法必须运行在它自己的事务中。一个新的事务将被启动。如果存在当前事务，在该方法执行期间，当前事务会被挂起。如果使用JTATransactionManager的话，则需要访问TransactionManager</td>
+</tr>
+<tr>
+<td align="left">PROPAGATION_NOT_SUPPORTED</td>
+<td align="left">表示该方法不应该运行在事务中。如果存在当前事务，在该方法运行期间，当前事务将被挂起。如果使用JTATransactionManager的话，则需要访问TransactionManager</td>
+</tr>
+<tr>
+<td align="left">PROPAGATION_NEVER</td>
+<td align="left">表示当前方法不应该运行在事务上下文中。如果当前正有一个事务在运行，则会抛出异常</td>
+</tr>
+<tr>
+<td align="left">PROPAGATION_NESTED</td>
+<td align="left">表示如果当前已经存在一个事务，那么该方法将会在嵌套事务中运行。嵌套的事务可以独立于当前事务进行单独地提交或回滚。如果当前事务不存在，那么其行为与PROPAGATION_REQUIRED一样。注意各厂商对这种传播行为的支持是有所差异的。可以参考资源管理器的文档来确认它们是否支持嵌套事务</td>
+</tr>
+</tbody></table>
+<p>转载自：<a href="https://blog.csdn.net/hcmony/article/details/77850183" target="_blank" rel="noopener">https://blog.csdn.net/hcmony/article/details/77850183</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/ILMayu/2019/08/24/事务传播行为详解/" data-id="cjzobuhbs0000ycv88p1gannk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Spring中基于注解的AOP配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/20/Spring中基于注解的AOP配置/" class="article-date">
@@ -90,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/Spring中基于注解的AOP配置/" data-id="cjzjzzfsb00027kv8ubzz096r" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/Spring中基于注解的AOP配置/" data-id="cjzobuhbz0002ycv8rbimg2wc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/" data-id="cjzjzzfs100007kv89bodd1cx" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/" data-id="cjzobuhc00003ycv85a2km673" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +307,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/" data-id="cjzjzzfsh00057kv84v3ktme2" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/" data-id="cjzobuhc30005ycv8p8cy533t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +361,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口和基于子类的动态代理/" data-id="cjzjzzfse00037kv83k9fiprs" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口和基于子类的动态代理/" data-id="cjzobuhc10004ycv8yenrpllm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -382,7 +457,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/我的第一篇博客文章/" data-id="cjzjzzfsg00047kv8cr2fttmr" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/17/我的第一篇博客文章/" data-id="cjzobuhc40006ycv86szoa4yg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,7 +506,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/16/hello-world/" data-id="cjzjzzfs700017kv8vw35rki7" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/16/hello-world/" data-id="cjzobuhbx0001ycv8ghrw7gbp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -472,6 +547,10 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       <ul>
         
           <li>
+            <a href="/2019/08/24/事务传播行为详解/">事务传播行为详解</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/20/Spring中基于注解的AOP配置/">Spring中基于注解的AOP配置</a>
           </li>
         
@@ -485,10 +564,6 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
         
           <li>
             <a href="/2019/08/17/基于接口和基于子类的动态代理/">基于接口和基于子类的动态代理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/17/我的第一篇博客文章/">我的第一篇博客文章 --- Markdown语言学习</a>
           </li>
         
       </ul>
