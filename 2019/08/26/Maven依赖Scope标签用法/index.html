@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Maven依赖Scope标签用法 | Lxl&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在一个maven项目中，如果存在编译需要而发布不需要的jar包，可以用scope标签，值设为provided。如下： 1234567&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;javax.servlet.jsp&amp;lt;/groupId&amp;gt;  &amp;lt;artifactId&amp;gt;jsp-api&amp;lt;/artifactId&amp;gt;  &amp;lt;version&amp;gt;2.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven依赖Scope标签用法">
+<meta property="og:url" content="https://github.com/ILMayu/2019/08/26/Maven依赖Scope标签用法/index.html">
+<meta property="og:site_name" content="Lxl&#39;s Blog">
+<meta property="og:description" content="在一个maven项目中，如果存在编译需要而发布不需要的jar包，可以用scope标签，值设为provided。如下： 1234567&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;javax.servlet.jsp&amp;lt;/groupId&amp;gt;  &amp;lt;artifactId&amp;gt;jsp-api&amp;lt;/artifactId&amp;gt;  &amp;lt;version&amp;gt;2.1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-25T16:27:54.243Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maven依赖Scope标签用法">
+<meta name="twitter:description" content="在一个maven项目中，如果存在编译需要而发布不需要的jar包，可以用scope标签，值设为provided。如下： 1234567&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;javax.servlet.jsp&amp;lt;/groupId&amp;gt;  &amp;lt;artifactId&amp;gt;jsp-api&amp;lt;/artifactId&amp;gt;  &amp;lt;version&amp;gt;2.1">
+  
+    <link rel="alternate" href="/atom.xml" title="Lxl&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Lxl&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/ILMayu"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Maven依赖Scope标签用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/26/Maven依赖Scope标签用法/" class="article-date">
+  <time datetime="2019-08-25T16:21:59.000Z" itemprop="datePublished">2019-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Maven依赖Scope标签用法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在一个maven项目中，如果存在编译需要而发布不需要的jar包，可以用scope标签，值设为provided。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;2.1&lt;/version&gt;</span><br><span class="line">  &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">  &lt;classifier /&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="scope的其他参数如下："><a href="#scope的其他参数如下：" class="headerlink" title="scope的其他参数如下："></a>scope的其他参数如下：</h2><ul>
+<li>compile</li>
+</ul>
+<p>默认的scope，表示 dependency 都可以在生命周期中使用。而且，这些dependencies 会传递到依赖的项目中。适用于所有阶段，会随着项目一起发布</p>
+<ul>
+<li>provided</li>
+</ul>
+<p>跟compile相似，但是表明了dependency 由JDK或者容器提供，例如Servlet AP和一些Java EE APIs。这个scope 只能作用在编译和测试时，同时没有传递性。</p>
+<ul>
+<li>runtime</li>
+</ul>
+<p>表示dependency不作用在编译时，但会作用在运行和测试时，如JDBC驱动，适用运行和测试阶段。</p>
+<ul>
+<li>test</li>
+</ul>
+<p>表示dependency作用在测试时，不作用在运行时。 只在测试时使用，用于编译和运行测试代码。不会随项目发布。</p>
+<ul>
+<li>system</li>
+</ul>
+<p>跟provided 相似，但是在系统中要以外部JAR包的形式提供，maven不会在repository查找它。</p>
+<p>原文链接：<a href="https://blog.csdn.net/daihui05/article/details/7476976" target="_blank" rel="noopener">https://blog.csdn.net/daihui05/article/details/7476976</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/ILMayu/2019/08/26/Maven依赖Scope标签用法/" data-id="cjzr6u88o0004fov8vak3ujmr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/26/解决Maven项目创建过慢问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">解决Maven项目创建过慢问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/26/Maven依赖Scope标签用法/">Maven依赖Scope标签用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/26/解决Maven项目创建过慢问题/">解决Maven项目创建过慢问题</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/事务传播行为详解/">事务传播行为详解</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/20/Spring中基于注解的AOP配置/">Spring中基于注解的AOP配置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/20/Spring-配置文件-命名空间及约束详解/">Spring 配置文件 命名空间及约束详解</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Lxl<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -62,6 +62,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Maven依赖Scope标签用法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/26/Maven依赖Scope标签用法/" class="article-date">
+  <time datetime="2019-08-25T16:21:59.000Z" itemprop="datePublished">2019-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/26/Maven依赖Scope标签用法/">Maven依赖Scope标签用法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在一个maven项目中，如果存在编译需要而发布不需要的jar包，可以用scope标签，值设为provided。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;2.1&lt;/version&gt;</span><br><span class="line">  &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">  &lt;classifier /&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="scope的其他参数如下："><a href="#scope的其他参数如下：" class="headerlink" title="scope的其他参数如下："></a>scope的其他参数如下：</h2><ul>
+<li>compile</li>
+</ul>
+<p>默认的scope，表示 dependency 都可以在生命周期中使用。而且，这些dependencies 会传递到依赖的项目中。适用于所有阶段，会随着项目一起发布</p>
+<ul>
+<li>provided</li>
+</ul>
+<p>跟compile相似，但是表明了dependency 由JDK或者容器提供，例如Servlet AP和一些Java EE APIs。这个scope 只能作用在编译和测试时，同时没有传递性。</p>
+<ul>
+<li>runtime</li>
+</ul>
+<p>表示dependency不作用在编译时，但会作用在运行和测试时，如JDBC驱动，适用运行和测试阶段。</p>
+<ul>
+<li>test</li>
+</ul>
+<p>表示dependency作用在测试时，不作用在运行时。 只在测试时使用，用于编译和运行测试代码。不会随项目发布。</p>
+<ul>
+<li>system</li>
+</ul>
+<p>跟provided 相似，但是在系统中要以外部JAR包的形式提供，maven不会在repository查找它。</p>
+<p>原文链接：<a href="https://blog.csdn.net/daihui05/article/details/7476976" target="_blank" rel="noopener">https://blog.csdn.net/daihui05/article/details/7476976</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/ILMayu/2019/08/26/Maven依赖Scope标签用法/" data-id="cjzr6u88o0004fov8vak3ujmr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-解决Maven项目创建过慢问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/26/解决Maven项目创建过慢问题/" class="article-date">
@@ -90,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/26/解决Maven项目创建过慢问题/" data-id="cjzr60zu60006a4v8uj8hwgn4" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/26/解决Maven项目创建过慢问题/" data-id="cjzr6u88s0007fov8g1bo0tdj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/24/事务传播行为详解/" data-id="cjzr60zu10002a4v8j5xex58s" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/24/事务传播行为详解/" data-id="cjzr6u88m0002fov881b0gpwx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/Spring中基于注解的AOP配置/" data-id="cjzr60zty0001a4v88jvgdpxs" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/Spring中基于注解的AOP配置/" data-id="cjzr6u88n0003fov8ddkwqn3t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -246,7 +306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/" data-id="cjzr60zts0000a4v8t3fyx69t" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/" data-id="cjzr6u88j0001fov8mqmk75ll" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,7 +405,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/" data-id="cjzr60zu50005a4v8hpglbzje" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/" data-id="cjzr6u88t0008fov8huyyrlyk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,7 +459,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口与基于子类的动态代理/" data-id="cjzr60zu70007a4v8ez1rx7o9" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口与基于子类的动态代理/" data-id="cjzr6u88p0005fov8rekawfx9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -495,7 +555,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/我的第一篇博客文章/" data-id="cjzr60zu40004a4v8efsgeu9s" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/17/我的第一篇博客文章/" data-id="cjzr6u88q0006fov8wzic6swf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -544,7 +604,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/16/hello-world/" data-id="cjzr60zu20003a4v8xznyrcwu" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/16/hello-world/" data-id="cjzr6u88d0000fov8zjqqizyw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -585,6 +645,10 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       <ul>
         
           <li>
+            <a href="/2019/08/26/Maven依赖Scope标签用法/">Maven依赖Scope标签用法</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/26/解决Maven项目创建过慢问题/">解决Maven项目创建过慢问题</a>
           </li>
         
@@ -598,10 +662,6 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
         
           <li>
             <a href="/2019/08/20/Spring-配置文件-命名空间及约束详解/">Spring 配置文件 命名空间及约束详解</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/20/面向切面编程AOP/">面向切面编程AOP</a>
           </li>
         
       </ul>
