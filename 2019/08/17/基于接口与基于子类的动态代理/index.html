@@ -10,11 +10,11 @@
   <meta name="description" content="动态代理 作用：不改变源码的基础上，对已有的方法增强，是AOP思想的实现基础 基于接口123456789101112131415161718192021      要求：被代理类最少实现一个接口提供者：JDK官方涉及的类：Proxy创建代理对象的方法：newProxyInstance(ClassLoader, Class[], InvocationHandler)参数一：类加载器，和被代理对象使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于接口和基于子类的动态代理">
-<meta property="og:url" content="https://github.com/ILMayu/2019/08/17/基于接口和基于子类的动态代理/index.html">
+<meta property="og:url" content="https://github.com/ILMayu/2019/08/17/基于接口与基于子类的动态代理/index.html">
 <meta property="og:site_name" content="Lxl&#39;s Blog">
 <meta property="og:description" content="动态代理 作用：不改变源码的基础上，对已有的方法增强，是AOP思想的实现基础 基于接口123456789101112131415161718192021      要求：被代理类最少实现一个接口提供者：JDK官方涉及的类：Proxy创建代理对象的方法：newProxyInstance(ClassLoader, Class[], InvocationHandler)参数一：类加载器，和被代理对象使用">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-20T11:19:50.960Z">
+<meta property="og:updated_time" content="2019-08-25T04:06:37.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于接口和基于子类的动态代理">
 <meta name="twitter:description" content="动态代理 作用：不改变源码的基础上，对已有的方法增强，是AOP思想的实现基础 基于接口123456789101112131415161718192021      要求：被代理类最少实现一个接口提供者：JDK官方涉及的类：Proxy创建代理对象的方法：newProxyInstance(ClassLoader, Class[], InvocationHandler)参数一：类加载器，和被代理对象使用">
@@ -64,9 +64,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-基于接口和基于子类的动态代理" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-基于接口与基于子类的动态代理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/17/基于接口和基于子类的动态代理/" class="article-date">
+    <a href="/2019/08/17/基于接口与基于子类的动态代理/" class="article-date">
   <time datetime="2019-08-17T14:40:27.000Z" itemprop="datePublished">2019-08-17</time>
 </a>
     
@@ -94,7 +94,7 @@
 
 <h3 id="实现类"><a href="#实现类" class="headerlink" title="实现类"></a>实现类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Person implements IPerson &#123;</span><br><span class="line">	@Override    </span><br><span class="line">	public void run(Integer meter) &#123;</span><br><span class="line">    	System.out.println(&quot;跑了&quot; + meter + &quot;米&quot;);</span><br><span class="line">    &#125;&#125;</span><br><span class="line">    </span><br><span class="line">    public void speak(String value)&#123;</span><br><span class="line">        System.out.println(value);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="基于接口代理"><a href="#基于接口代理" class="headerlink" title="基于接口代理"></a>基于接口代理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">final static Person person = new Person();</span><br><span class="line">@Test</span><br><span class="line">public void test1()&#123;    </span><br><span class="line">	IPerson proxyPerson = (IPerson) Proxy.newProxyInstance(            						person.getClass().getClassLoader(),</span><br><span class="line">	person.getClass().getInterfaces(),</span><br><span class="line">	new InvocationHandler() &#123;</span><br><span class="line">		@Override        </span><br><span class="line">		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123; </span><br><span class="line"></span><br><span class="line">            //* 执行被代理对象的任何方法都会经过该方法，该方法有拦截功能</span><br><span class="line">            //* 方法的参数：</span><br><span class="line">            //*   proxy：代理对象的引用，不一定每次都会用</span><br><span class="line">            //*   method：当前执行的方法反射出来的对象</span><br><span class="line">            //*   args：当前执行方法所需的参数</span><br><span class="line">            //*   返回值：当前执行方法的返回值</span><br><span class="line"></span><br><span class="line">            if (method.getName().equals(&quot;run&quot;)) &#123;</span><br><span class="line">                Integer km = (Integer) args[0]/1000;</span><br><span class="line">                System.out.println(&quot;等于&quot; + km + &quot;千米&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            	return method.invoke(person, args);</span><br><span class="line">            	</span><br><span class="line">            &#125;&#125;);</span><br><span class="line">            proxyPerson.run(1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基于接口代理"><a href="#基于接口代理" class="headerlink" title="基于接口代理"></a>基于接口代理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">final static Person person = new Person();</span><br><span class="line">@Test</span><br><span class="line">public void test1()&#123;    </span><br><span class="line">	IPerson proxyPerson = (IPerson) Proxy.newProxyInstance(</span><br><span class="line">	person.getClass().getClassLoader(),</span><br><span class="line">	person.getClass().getInterfaces(),</span><br><span class="line">	new InvocationHandler() &#123;</span><br><span class="line">		@Override        </span><br><span class="line">		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123; </span><br><span class="line"></span><br><span class="line">            //* 执行被代理对象的任何方法都会经过该方法，该方法有拦截功能</span><br><span class="line">            //* 方法的参数：</span><br><span class="line">            //*   proxy：代理对象的引用，不一定每次都会用</span><br><span class="line">            //*   method：当前执行的方法反射出来的对象</span><br><span class="line">            //*   args：当前执行方法所需的参数</span><br><span class="line">            //*   返回值：当前执行方法的返回值</span><br><span class="line"></span><br><span class="line">            if (method.getName().equals(&quot;run&quot;)) &#123;</span><br><span class="line">                Integer km = (Integer) args[0]/1000;</span><br><span class="line">                System.out.println(&quot;等于&quot; + km + &quot;千米&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            	return method.invoke(person, args);</span><br><span class="line">            	</span><br><span class="line">            &#125;&#125;);</span><br><span class="line">            proxyPerson.run(1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>等于1千米<br>跑了1000米</p>
 <hr>
@@ -108,7 +108,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口和基于子类的动态代理/" data-id="cjzobyacf0004l8v8xrj6fk42" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口与基于子类的动态代理/" data-id="cjzqgbq4k0003jsv8pieca2tp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +182,7 @@
           </li>
         
           <li>
-            <a href="/2019/08/17/基于接口和基于子类的动态代理/">基于接口和基于子类的动态代理</a>
+            <a href="/2019/08/17/基于接口与基于子类的动态代理/">基于接口和基于子类的动态代理</a>
           </li>
         
       </ul>

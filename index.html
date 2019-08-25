@@ -127,7 +127,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/24/事务传播行为详解/" data-id="cjzobyacd0002l8v8hpfj6vcq" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/24/事务传播行为详解/" data-id="cjzqgbq4j0002jsv86c04rnd3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/Spring中基于注解的AOP配置/" data-id="cjzobyacb0001l8v8vnsobndc" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/Spring中基于注解的AOP配置/" data-id="cjzqgbq4l0004jsv8fjps3eye" class="article-share-link">Share</a>
       
       
     </footer>
@@ -208,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/" data-id="cjzobyac60000l8v8h7jw6x6v" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/" data-id="cjzqgbq4c0000jsv8n50yo133" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +307,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/" data-id="cjzobyach0005l8v8xvhxskbm" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/" data-id="cjzqgbq4w0006jsv8jt9vlmak" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,9 +317,9 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
 
 
   
-    <article id="post-基于接口和基于子类的动态代理" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-基于接口与基于子类的动态代理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/17/基于接口和基于子类的动态代理/" class="article-date">
+    <a href="/2019/08/17/基于接口与基于子类的动态代理/" class="article-date">
   <time datetime="2019-08-17T14:40:27.000Z" itemprop="datePublished">2019-08-17</time>
 </a>
     
@@ -331,7 +331,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/17/基于接口和基于子类的动态代理/">基于接口和基于子类的动态代理</a>
+      <a class="article-title" href="/2019/08/17/基于接口与基于子类的动态代理/">基于接口和基于子类的动态代理</a>
     </h1>
   
 
@@ -347,7 +347,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
 
 <h3 id="实现类"><a href="#实现类" class="headerlink" title="实现类"></a>实现类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Person implements IPerson &#123;</span><br><span class="line">	@Override    </span><br><span class="line">	public void run(Integer meter) &#123;</span><br><span class="line">    	System.out.println(&quot;跑了&quot; + meter + &quot;米&quot;);</span><br><span class="line">    &#125;&#125;</span><br><span class="line">    </span><br><span class="line">    public void speak(String value)&#123;</span><br><span class="line">        System.out.println(value);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="基于接口代理"><a href="#基于接口代理" class="headerlink" title="基于接口代理"></a>基于接口代理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">final static Person person = new Person();</span><br><span class="line">@Test</span><br><span class="line">public void test1()&#123;    </span><br><span class="line">	IPerson proxyPerson = (IPerson) Proxy.newProxyInstance(            						person.getClass().getClassLoader(),</span><br><span class="line">	person.getClass().getInterfaces(),</span><br><span class="line">	new InvocationHandler() &#123;</span><br><span class="line">		@Override        </span><br><span class="line">		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123; </span><br><span class="line"></span><br><span class="line">            //* 执行被代理对象的任何方法都会经过该方法，该方法有拦截功能</span><br><span class="line">            //* 方法的参数：</span><br><span class="line">            //*   proxy：代理对象的引用，不一定每次都会用</span><br><span class="line">            //*   method：当前执行的方法反射出来的对象</span><br><span class="line">            //*   args：当前执行方法所需的参数</span><br><span class="line">            //*   返回值：当前执行方法的返回值</span><br><span class="line"></span><br><span class="line">            if (method.getName().equals(&quot;run&quot;)) &#123;</span><br><span class="line">                Integer km = (Integer) args[0]/1000;</span><br><span class="line">                System.out.println(&quot;等于&quot; + km + &quot;千米&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            	return method.invoke(person, args);</span><br><span class="line">            	</span><br><span class="line">            &#125;&#125;);</span><br><span class="line">            proxyPerson.run(1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="基于接口代理"><a href="#基于接口代理" class="headerlink" title="基于接口代理"></a>基于接口代理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">final static Person person = new Person();</span><br><span class="line">@Test</span><br><span class="line">public void test1()&#123;    </span><br><span class="line">	IPerson proxyPerson = (IPerson) Proxy.newProxyInstance(</span><br><span class="line">	person.getClass().getClassLoader(),</span><br><span class="line">	person.getClass().getInterfaces(),</span><br><span class="line">	new InvocationHandler() &#123;</span><br><span class="line">		@Override        </span><br><span class="line">		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123; </span><br><span class="line"></span><br><span class="line">            //* 执行被代理对象的任何方法都会经过该方法，该方法有拦截功能</span><br><span class="line">            //* 方法的参数：</span><br><span class="line">            //*   proxy：代理对象的引用，不一定每次都会用</span><br><span class="line">            //*   method：当前执行的方法反射出来的对象</span><br><span class="line">            //*   args：当前执行方法所需的参数</span><br><span class="line">            //*   返回值：当前执行方法的返回值</span><br><span class="line"></span><br><span class="line">            if (method.getName().equals(&quot;run&quot;)) &#123;</span><br><span class="line">                Integer km = (Integer) args[0]/1000;</span><br><span class="line">                System.out.println(&quot;等于&quot; + km + &quot;千米&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            	return method.invoke(person, args);</span><br><span class="line">            	</span><br><span class="line">            &#125;&#125;);</span><br><span class="line">            proxyPerson.run(1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>等于1千米<br>跑了1000米</p>
 <hr>
@@ -361,7 +361,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口和基于子类的动态代理/" data-id="cjzobyacf0004l8v8xrj6fk42" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口与基于子类的动态代理/" data-id="cjzqgbq4k0003jsv8pieca2tp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -457,7 +457,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/我的第一篇博客文章/" data-id="cjzobyace0003l8v8m23g0fz0" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/17/我的第一篇博客文章/" data-id="cjzqgbq4v0005jsv8luvvroae" class="article-share-link">Share</a>
       
       
     </footer>
@@ -506,7 +506,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/16/hello-world/" data-id="cjzobyaci0006l8v8834ygyxa" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/16/hello-world/" data-id="cjzqgbq4h0001jsv8oma4p02g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -563,7 +563,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
           </li>
         
           <li>
-            <a href="/2019/08/17/基于接口和基于子类的动态代理/">基于接口和基于子类的动态代理</a>
+            <a href="/2019/08/17/基于接口与基于子类的动态代理/">基于接口和基于子类的动态代理</a>
           </li>
         
       </ul>
