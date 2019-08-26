@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SpringMVC-自定义类型转换器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/26/SpringMVC-自定义类型转换器/" class="article-date">
+  <time datetime="2019-08-26T14:37:52.000Z" itemprop="datePublished">2019-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/26/SpringMVC-自定义类型转换器/">SpringMVC-自定义类型转换器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道SpringMVC会帮助我们把来自请求的数据进行类型转换然后封装成对象以便持久化，例如String –&gt; Integer,<br>如果有特殊格式转换需求可以自定义类型转换器</p>
+<h1 id="需求：将格式”yyyy-MM-dd”的字符串转换成Date类型"><a href="#需求：将格式”yyyy-MM-dd”的字符串转换成Date类型" class="headerlink" title="需求：将格式”yyyy-MM-dd”的字符串转换成Date类型"></a>需求：将格式”yyyy-MM-dd”的字符串转换成Date类型</h1><h2 id="实现类"><a href="#实现类" class="headerlink" title="实现类"></a>实现类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//自定义类型转换器类必须实现Converter接口</span><br><span class="line">public class StringToDateConverter implements Converter&lt;String, Date&gt; &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Date convert(String source) &#123;</span><br><span class="line">        DateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);//设置格式</span><br><span class="line">        try &#123;</span><br><span class="line">            return df.parse(source);//返回转换后date</span><br><span class="line">        &#125; catch (ParseException e) &#123;</span><br><span class="line">            throw new RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="xml配置"><a href="#xml配置" class="headerlink" title="xml配置"></a>xml配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;ConversionService&quot; class=&quot;org.springframework.context.support.ConversionServiceFactoryBean&quot;&gt;</span><br><span class="line">    &lt;property name=&quot;converters&quot;&gt;</span><br><span class="line">        &lt;set&gt;</span><br><span class="line">            &lt;bean class=&quot;com.lxl.utils.StringToDateConverter&quot;/&gt;</span><br><span class="line">        &lt;/set&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;mvc:annotation-driven conversion-service=&quot;ConversionService&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/ILMayu/2019/08/26/SpringMVC-自定义类型转换器/" data-id="cjzsis79j000084v8wathgbc2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Maven依赖Scope标签用法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/26/Maven依赖Scope标签用法/" class="article-date">
@@ -112,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/26/Maven依赖Scope标签用法/" data-id="cjzr6u88o0004fov8vak3ujmr" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/26/Maven依赖Scope标签用法/" data-id="cjzsis79p000284v836i4gkj7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/26/解决Maven项目创建过慢问题/" data-id="cjzr6u88s0007fov8g1bo0tdj" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/26/解决Maven项目创建过慢问题/" data-id="cjzsis79u000684v8wouystiz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -225,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/24/事务传播行为详解/" data-id="cjzr6u88m0002fov881b0gpwx" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/24/事务传播行为详解/" data-id="cjzsis79t000584v8jqoje2gw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/Spring中基于注解的AOP配置/" data-id="cjzr6u88n0003fov8ddkwqn3t" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/Spring中基于注解的AOP配置/" data-id="cjzsis79s000484v8an4jcktf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/" data-id="cjzr6u88j0001fov8mqmk75ll" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/Spring-配置文件-命名空间及约束详解/" data-id="cjzsis79o000184v89il8q4q3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -405,7 +446,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/" data-id="cjzr6u88t0008fov8huyyrlyk" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/20/面向切面编程AOP/" data-id="cjzsis79x000984v87gk0jwbn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +500,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口与基于子类的动态代理/" data-id="cjzr6u88p0005fov8rekawfx9" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/17/基于接口与基于子类的动态代理/" data-id="cjzsis79v000784v8ys1p4hrq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -555,7 +596,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/17/我的第一篇博客文章/" data-id="cjzr6u88q0006fov8wzic6swf" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/17/我的第一篇博客文章/" data-id="cjzsis79w000884v8296vhiqc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -604,7 +645,7 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/ILMayu/2019/08/16/hello-world/" data-id="cjzr6u88d0000fov8zjqqizyw" class="article-share-link">Share</a>
+      <a data-url="https://github.com/ILMayu/2019/08/16/hello-world/" data-id="cjzsis79q000384v8xstzkhe1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -645,6 +686,10 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
       <ul>
         
           <li>
+            <a href="/2019/08/26/SpringMVC-自定义类型转换器/">SpringMVC-自定义类型转换器</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/26/Maven依赖Scope标签用法/">Maven依赖Scope标签用法</a>
           </li>
         
@@ -658,10 +703,6 @@ expression     属性用于指定表达式内容 触发通知的条件</code></p
         
           <li>
             <a href="/2019/08/20/Spring中基于注解的AOP配置/">Spring中基于注解的AOP配置</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/20/Spring-配置文件-命名空间及约束详解/">Spring 配置文件 命名空间及约束详解</a>
           </li>
         
       </ul>
